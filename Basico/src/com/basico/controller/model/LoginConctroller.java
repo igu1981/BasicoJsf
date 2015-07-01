@@ -53,6 +53,17 @@ public class LoginConctroller implements Serializable
             password = "";
         }
     }  
+	
+	public void acceso() 
+	{  
+	
+	
+	}
+	
+	public void registro() 
+	{  
+		
+	}
 
 	
 	//------------------------- Getters y Setters -------------------------------
