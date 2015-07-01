@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<h:outputStylesheet name="css/styles.css"  /> 
+</h:head>
+<h:body style="text-align:center" >
+	
+	<h:panelGrid style="height:100%;width:100%;background-color:#7c7e7e">
+	
+		<h:form id="form" >
+			<p:messages id="messages" showDetail="true" autoUpdate="false"/>
+			<p:panel header="Acceso Login" styleClass="panel" style="border:0;background-color:#7c7e7e">
+			 <p:graphicImage   library="images" name="login.jpg" style="height:20%;width:20%;"/>
+			<div class="login" >
+			    <h:panelGrid>
+				    <h:outputLabel for="username" value="Usuario:" />
+					<p:inputText id="username" value="#{Login.username}" required="true"/>
+					<h:outputLabel for="password" value="Clave:" />
+					<p:password id="password" value="#{Login.password}" />
+					<f:facet name="footer">
+						 <p:commandButton value="Entrar"  actionListener="#{Login.logearse}" 
+						  update=":form:messages" oncomplete="handleLoginRequest(xhr, status, args)"/>
+					
+					</f:facet>
+				</h:panelGrid>
+				</div>
+			</p:panel>
+		</h:form>
+	</h:panelGrid>
+</h:body>
+</html>

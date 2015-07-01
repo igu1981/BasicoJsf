@@ -1,0 +1,79 @@
+.TextArea{   
+   border-collapse:collapse;
+   border-bottom:1px solid #000000;
+}
+
+
+.TableRow{
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+}
+.w50{
+	width: 50%;
+}
+.w100 {width:100%;}
+.left {text-align:left;}
+.right {text-align:right;}
+
+.h1{
+	text-align: center;
+	padding: 0 ;
+	
+	
+}
+.cabecera
+{
+	background-color: #73B205;
+	
+	
+}
+.textarea{
+	text-align:center;
+}
+.boton{
+	text-align:center;
+	
+}
+.table1
+{
+	margin: 0 auto;
+	width: 100%;
+}
+.menu{
+	height: 100%;
+	width: 100%;
+}
+
+.filtro{
+	position:absolute;
+ top:0;
+ left:0;
+ width:200px;
+}
+.buscar
+{
+	
+ position:absolute;
+ top:0;
+ right:0;
+ width:200px;
+	
+}
+.login{
+	display: inline-block;
+
+}
+.panel{
+	text-align: center;
+}
+.btnVolver
+{
+	text-align: right;
+		
+}
+.panelGreen{
+	background-color:#d5e7b4;
+}
+.panelGreen .ui-layout-unit-content{
+	background-color:#d5e7b4;
+}

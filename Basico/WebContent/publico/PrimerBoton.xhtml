@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Primera Ventana</title>
+	 <h:outputStylesheet library="css" name="/css/styles.css"  /> 
+</h:head>
+<h:body>
+   <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+	<h:form>
+		<h:inputTextarea cols="30" rows="10" value="#{mensajeBean.descripcion}" styleClass="TextArea"/>
+		<h:outputText value="#{Primero.texto}" />
+
+		<h:commandButton value="Entrar" ajax="false"
+			action="#{mensajeBean.addMensaje()}" />
+
+
+		<h:dataTable id="table1" value="#{mensajeBean.listMensaje()}" var="item" border="1">
+			<f:facet name="header">
+				<h:outputText value="Lista de Mensajes" />
+			</f:facet>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Descripcion" styleClass="TableRow" />
+				</f:facet>
+				<h:outputText value="#{item.descripcion}" />
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

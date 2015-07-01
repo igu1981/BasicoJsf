@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+	<h:head>
+	<h:outputStylesheet  library="css" name="/styles.css" />
+	</h:head>
+	
+		<p:layout fullPage="true">
+				<p:layoutUnit position="north">
+				<h:form>
+					<p:fieldset legend="Filtro de Busqueda" style="margin-bottom:20px">
+					
+					<h:panelGrid columns="2" cellpadding="5">
+					 <p:outputLabel value="Filtrar por palabras: " />
+					 <p:inputText value="#{mensajeBean.filtBusqueda}"></p:inputText>
+					 
+					 <div class="buscar">
+					 <p:commandButton update=":tabla"  value="Buscar"></p:commandButton>
+					 </div>
+					</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+         </p:layoutUnit>
+				<p:layoutUnit position="center">
+			<h:form id="tabla">		
+	   <p:growl id="msgs" showDetail="true"/>
+	 
+	   <p:dataTable id="mensaje" var="mensaje" value="#{mensajeBean.search()}" editable="true" style="margin-bottom:20px">
+	     <p:column>
+	     	<h:outputText value="#{mensaje.descripcion}" />
+	     </p:column>
+	      
+	   </p:dataTable>
+	    </h:form>
+				</p:layoutUnit> 
+		</p:layout>
+	</html>
