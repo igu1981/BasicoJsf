@@ -1,6 +1,8 @@
 package com.basico.controller.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -10,6 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
@@ -35,6 +38,7 @@ public class MensajeController implements Serializable
 	boolean estado;
 	private Mensaje mensaje;
 	private Long key;
+	private Date date3;
 	
 	
 	
@@ -112,7 +116,14 @@ public class MensajeController implements Serializable
 	public void setKey(Long key) {
 		this.key = key;
 	}
+	
+	public Date getDate3() {
+		return date3;
+	}
 
+	public void setDate3(Date date3) {
+		this.date3 = date3;
+	}
 	
 	//------------------------- Metodos -------------------------------
 	
@@ -129,6 +140,12 @@ public class MensajeController implements Serializable
 	public List<Mensaje> listMensaje()
 	{
 		return mensajeDao.findAll();
+	}
+	public String listaMensaje()
+	{
+		mensajes=listMensaje();
+		
+		return "/publico/lista-mensaje.xhtml?faces-redirect=true";
 	}
 	 public void info() {
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido",lc.getUsername() ));
@@ -173,7 +190,7 @@ public class MensajeController implements Serializable
 	    {
 	    	estado=false;
 	    	filtBusqueda="";
-	    	return "/publico/buscar-mensaje.xhtml?faces-redirect=true";
+	    	return "/publico/filtro-mensaje.xhtml?faces-redirect=true";
 	    
 			
 	    }
@@ -187,11 +204,20 @@ public class MensajeController implements Serializable
 	    {
 	    	return "/publico/template/template.xhtml?faces-redirect=true";
 	    }
+	    
+	    public String borrar()
+	    {
+	    	mensajeDao.delete(mensaje.getMensajeId());
+	    	FacesMessage msg = new FacesMessage("Mensaje Borrado: " + mensaje.getMensajeId());
+	        FacesContext.getCurrentInstance().addMessage(null, msg);
+	        mensajes=listMensaje();
+	        
+	    	return "/publico/mensaje-mios.xhtml?faces-redirect=true";
+	    }
 		
 	    public String guardar()
 	    {
 	    	
-	   
 			mensaje=mensajeDao.update(mensaje);
 			FacesMessage msg = new FacesMessage("Mensaje Edited: " + mensaje.getMensajeId());
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -199,5 +225,31 @@ public class MensajeController implements Serializable
 			
 			return "/publico/template/modificar-mensaje.xhtml?faces-redirect=true";
 	    }
-	
+	    public String mios()
+	    {
+	    
+			
+			return "/publico/mensaje-mios.xhtml?faces-redirect=true";
+	    }
+	    public String nuevo()
+	    {
+	    
+			return "/publico/views/mensaje-nuevo.xhtml?faces-redirect=true";
+	    }
+	    
+	   
+		
+	    public void onDateSelect(SelectEvent event) {
+	        FacesContext facesContext = FacesContext.getCurrentInstance();
+	        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+	    }
+	     
+	    public void click() {
+	        RequestContext requestContext = RequestContext.getCurrentInstance();
+	         
+	        requestContext.update("form:display");
+	        requestContext.execute("PF('dlg').show()");
+	    }
+	 
 }

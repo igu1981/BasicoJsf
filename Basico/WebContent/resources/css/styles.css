@@ -1,17 +1,25 @@
 .TextArea{   
    border-collapse:collapse;
    border-bottom:1px solid #000000;
+   background-color:#7c7e7e;
 }
 
 
 .TableRow{
    text-align:center;
    background:none repeat scroll 0 0 #FFFFFFF;	
+   background-color:#7c7e7e;
 }
 .w50{
 	width: 50%;
 }
 .w100 {width:100%;}
+.w75{
+	width: 75%;
+}
+	.w25{
+	width: 25%;
+	}
 .left {text-align:left;}
 .right {text-align:right;}
 

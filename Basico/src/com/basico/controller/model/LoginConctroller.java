@@ -26,6 +26,9 @@ public class LoginConctroller implements Serializable
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
+	private String accesoUsuario;
+	private String apellidos;
+	private String email;
 
 	//------------------------- Metodos  -------------------------------
 
@@ -40,7 +43,7 @@ public class LoginConctroller implements Serializable
         if(username != null  && username.equals("ivan") && password != null  && password.equals("admin")) 
         {  
         	try {
-				ctx.getExternalContext().redirect("/Basico/faces/publico/template/template.xhtml");
+				ctx.getExternalContext().redirect("/Basico/faces/publico/menu-principal.xhtml");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -54,21 +57,37 @@ public class LoginConctroller implements Serializable
         }
     }  
 	
-	public void acceso() 
+	public String acceso() 
 	{  
 		
-		
+		return "/publico/acceso.xhtml?faces-redirect=true";
 	
 	
 	}
 	
-	public void registro() 
+	public String registro() 
 	{  
 		
 		
-		
+		return "/publico/registro.xhtml?faces-redirect=true";
 	}
+	
+	
 
+	
+	public String solicitar() 
+	{  
+		
+		
+		return "/publico/index.xhtml?faces-redirect=true";
+	}
+	
+	public String altanueva() 
+	{  
+		
+		
+		return "/publico/index.xhtml?faces-redirect=true";
+	}
 	
 	//------------------------- Getters y Setters -------------------------------
 	
@@ -87,4 +106,31 @@ public class LoginConctroller implements Serializable
 	public String getUsername() {
 		return username;
 	}
+
+	public String getAccesoUsuario() {
+		return accesoUsuario;
+	}
+
+	public void setAccesoUsuario(String accesoUsuario) {
+		this.accesoUsuario = accesoUsuario;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
+	
 }

@@ -18,40 +18,46 @@
 	
 		
 		<p:layoutUnit position="center" style="border:0 ;background-color:#7c7e7e">
-		<h:form id="form" style="height:100%;width:100%;" >
 		<p:messages id="messages" showDetail="true" autoUpdate="false"/>
 		<h:panelGrid style="height:100%;width:100%;background-color:#7c7e7e;padding:0" columns="2" columnClasses="w50 right,w50">
 		    
 		           <p:graphicImage library="images" name="login.jpg" style="width:50%;"/>
 		 
 		   <h:panelGroup>
+		   <h:form id="form" style="height:100%;width:100%;" >
 		       <h:panelGrid columns="2" style="text-align:left">
 		            <h:outputLabel for="username" value="Usuario:" />
-					<p:inputText id="username" value="#{Login.username}" required="true"/>
+					<p:inputText id="username" value="#{usuarioBean.username}" required="true"/>
 					<h:outputLabel for="password" value="Clave:" />
-					<p:password id="password" value="#{Login.password}" />
+					<p:password id="password" value="#{usuarioBean.password}" />
 					<h:panelGroup></h:panelGroup>
 					<h:panelGroup styleClass="btnlogin" style="text-align:center">
-					<p:commandButton value="Entrar"  actionListener="#{Login.logearse}" 
-					update=":form:messages" oncomplete="handleLoginRequest(xhr, status, args)"/>
+					<p:commandButton value="Entrar" ajax="false" action="#{usuarioBean.login}" 
+					update=":messages"/>
 					</h:panelGroup>
+					</h:panelGrid>
+				</h:form>
+				<h:form>
+					<h:panelGrid columns="2" style="text-align:left">	
 					
 					<h:panelGroup></h:panelGroup>
 					<h:panelGrid columns="2">
-					<p:commandLink id="acceso"  actionListener="#{loginController.acceso()}">
-					<h:outputText value="Solicitar Acceso" />
+					<p:commandLink id="acceso" style="margin-right:10px;" ajax="false" action="#{Login.acceso()}">
+					<h:outputText value="Solicitar Acceso"/>
     				</p:commandLink>
-					<p:commandLink id="registro" actionListener="#{loginController.registro()}">
+    				
+    				
+					<p:commandLink id="registro"  ajax="false" action="#{Login.registro()}">
 					<h:outputText value="Registrate" />
     				</p:commandLink>
     				
 					</h:panelGrid>
 					</h:panelGrid>
-						
+				</h:form>
 	   </h:panelGroup>
 		
 		</h:panelGrid>	
-		</h:form>	
+		
         </p:layoutUnit>
         <p:layoutUnit position="south" style="background-color:#d5e7b4"/>
 	</p:layout>

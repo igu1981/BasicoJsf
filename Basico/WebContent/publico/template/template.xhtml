@@ -30,8 +30,7 @@
 		<h:body>
         <p:layout fullPage="true">
         
-                             <!--  ************************PArte de Arriba************************** --> 
-        	<p:layoutUnit position="north">
+        	<p:layoutUnit position="north" style="background-color:#d5e7b4" minSize="100" styleClass="panelGreen">
 				<div class="h1">
 					<h1>Pagina envio de Mensajes</h1>
 				</div>
@@ -43,13 +42,14 @@
 			
 			</p:layoutUnit>
 			
-			<p:layoutUnit id="center" position="center">
+			<p:layoutUnit position="center" style="border:0 ;background-color:#7c7e7e">
 				<div class="h1">
 				
 				<ui:include src="/publico/comun/principal.xhtml"/>
 					center
 				</div>
 			</p:layoutUnit>
+			<p:layoutUnit position="south" style="background-color:#d5e7b4"/>
         </p:layout>	
 		</h:body>
 	</f:view>
