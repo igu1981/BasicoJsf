@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:f="http://java.sun.com/jsf/core"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+	 <p:panelMenu style="width:200px">
+        <p:submenu label="Mensaje">
+            <p:menuitem value="Nuevo Mensaje" ajax="false" action="#{mensajeBean.nuevo()}"  />
+            <p:menuitem value="Lista Mensaje" ajax="false" action="#{mensajeBean.listaMensaje()}" />
+            <p:menuitem value="Creados por mi"  ajax="false" action="#{mensajeBean.mios()}" />
+            <p:menuitem value="Filtro" ajax="false" action="#{mensajeBean.busqueda()}"/>
+        </p:submenu>
+        <p:submenu label="Cambios">
+            <p:menuitem value="Modificar Mensaje Creados por mi" actionListener="#{mensajeBean.modificar}" update="messages" ajax="false" />
+        </p:submenu>
+        <p:submenu label="Configuracion">
+            <p:menuitem value="Editar Cambios" actionListener="#{mensajeBean.modificar()}"/>
+        </p:submenu>
+    </p:panelMenu>
+	</h:form>
+</ui:composition>
+</html>

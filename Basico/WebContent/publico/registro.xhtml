@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"	          
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Registro Usuarios</title>
+	<h:outputStylesheet library="css" name="/styles.css" />
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+	<p:layoutUnit position="north" style="background-color:#d5e7b4" minSize="100" styleClass="panelGreen"/>
+	<p:layoutUnit position="north" minSize="100" styleClass="panelGreen">
+	Alta de Usuarios
+	</p:layoutUnit>
+		<p:layoutUnit position="center" style="border:0 ;background-color:#7c7e7e">
+		
+		<p:messages id="messages" showDetail="true" autoUpdate="false"/>
+		
+		<h:form id="form" style="height:100%;width:100%;" >
+		     <h:panelGrid style="height:100%;width:100%;background-color:#7c7e7e;padding:0">
+		            <h:outputLabel for="username" value="Usuario:" />
+					<p:inputText id="username" value="#{Login.username}" required="true"/>
+					<h:outputLabel for="apellidos" value="Apellidos" />
+					<p:inputText id="apellidos" value="#{Login.apellidos}" required="true"/>
+					<h:outputLabel for="email" value="Email" />
+					<p:inputText id="email" value="#{Login.email}" required="true"/>
+					<h:outputLabel for="password" value="Clave:" />
+					<p:password id="password" value="#{Login.password}" />
+					
+					<h:panelGroup styleClass="btnlogin" style="text-align:center">
+					<p:commandButton value="Entrar"  actionListener="#{Login.altaNueva()}" 
+					update=":messages" oncomplete="handleLoginRequest(xhr, status, args)"/>
+					</h:panelGroup>
+				</h:panelGrid>		
+		</h:form>		
+		
+        </p:layoutUnit>
+        <p:layoutUnit position="south" style="background-color:#d5e7b4"/>
+	</p:layout>
+</h:body>
+</html>
