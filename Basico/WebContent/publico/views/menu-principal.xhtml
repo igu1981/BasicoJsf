@@ -33,7 +33,16 @@
         	<p:layoutUnit position="north" style="background-color:#d5e7b4" minSize="100" styleClass="panelGreen">
 				<div class="h1">
 					<h1>Pagina envio de Mensajes</h1>
-					Bienvenido : <h:outputText value="#{usuarioBean.username}" />
+				</div>
+				<div class="perfil">
+				Bienvenido :<h:outputText value="#{usuarioBean.username}"/>
+					<h:form>
+						<p:splitButton  styleClass="btnPerfil"  value="Usuario" actionListener="#{usuarioBean.username}">
+							<p:menuitem value="Cerrar Session" ajax="false" action="#{usuarioBean.logout}"/>
+							<p:separator/>
+							<p:menuitem value="Pagina Inicio" ajax="false" action="#{mensajeBean.volver}" />
+						</p:splitButton>
+					</h:form>
 				</div>
 			</p:layoutUnit>
 			<p:layoutUnit position="west" resizable="true" size="200" minSize="241"

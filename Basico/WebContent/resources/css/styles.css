@@ -4,7 +4,19 @@
    background-color:#7c7e7e;
 }
 
+.perfil
+{
+	 text-align:right;
+}
 
+.btnPerfil .ui-button .ui-button-text
+{
+	font-size: 0.9em !important; 
+}
+.btnTable
+{
+	width:25px;
+}
 .TableRow{
    text-align:center;
    background:none repeat scroll 0 0 #FFFFFFF;	

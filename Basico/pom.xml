@@ -73,8 +73,6 @@
 			<version>${primefaces.version}</version>
 		</dependency>
 		
-		
-		
 		<!-- S -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

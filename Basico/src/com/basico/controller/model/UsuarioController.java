@@ -62,7 +62,7 @@ public class UsuarioController implements Serializable{
 		int valid = loginDao.validarUser(username, password);
         if (valid!=-1) {
            
-            return "/publico/menu-principal.xhtml?faces-redirect=true";
+            return "/publico/views/menu-principal.xhtml?faces-redirect=true";
             
         } else {
             FacesContext.getCurrentInstance().addMessage(
@@ -70,17 +70,21 @@ public class UsuarioController implements Serializable{
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
                             "Incorrecto Usuario y Passowrd",
                             "Por favor introduce de nuevo Usuario y Password"));
-            return "/publico/index.xhtml?faces-redirect=true";
+            return "/publico/views/index.xhtml?faces-redirect=true";
         }
 		
 		
 		
 	}
 	
-	public String logout() {
-       
-        return "login";
-    }
+    public String logout()
+    {    
+    	
+        username="";
+        password="";
+        
+    	 return "/publico/views/index.xhtml?faces-redirect=true"; 
+      }  
 	
 
 }

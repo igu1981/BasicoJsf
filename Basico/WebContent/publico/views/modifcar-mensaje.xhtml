@@ -22,7 +22,7 @@
 			</f:facet>
 
 			<title>
-			Nuevo Mensaje
+			Modificar Mensaje
 			</title>
 			<h:outputStylesheet  library="css" name="/styles.css" />
 		</h:head>
@@ -32,7 +32,7 @@
         
         	<p:layoutUnit position="north" style="background-color:#d5e7b4" minSize="100" styleClass="panelGreen">
 				<div class="h1">
-					<h1>Pagina de Nuevo Mensajes</h1>
+					<h1>Pagina Modificar Mensajes</h1>
 				</div>
 				<div class="perfil">
 				Bienvenido :<h:outputText value="#{usuarioBean.username}"/>
@@ -40,7 +40,7 @@
 						<p:splitButton  styleClass="btnPerfil"  value="Usuario" actionListener="#{usuarioBean.username}">
 							<p:menuitem value="Cerrar Session" ajax="false" action="#{usuarioBean.logout}"/>
 							<p:separator/>
-							<p:menuitem value="Pagina Inicio" ajax="false" action="#{mensajeBean.volver}" />
+							<p:menuitem value="Pagina Inicio" ajax="false" action="#{mensajeBean.volver}"/>
 						</p:splitButton>
 					</h:form>
 				</div>
@@ -53,28 +53,25 @@
 			</p:layoutUnit>
 			
 			<p:layoutUnit position="center" style="border:0 ;background-color:#7c7e7e">
-				<div class="h1">
-				
-				<h:form id="form">
-					<p:fieldset legend="Nuevo Mensaje" style="margin-bottom:20px">
+				<h:form>
+					<p:fieldset legend="Editar Mensajes" style="margin-bottom:20px">
 					
-					<h:panelGrid columns="2" cellpadding="5" styleClass="w100" columnClasses="w25,w75">
-					 <p:outputLabel value="Escriba una descripcion: "/>
-					 <p:inputText value="#{mensajeBean.descripcion}" styleClass="w100"></p:inputText>
-					 <p:outputLabel for="button" value="Fecha del Mensaje:" />
-        			<p:calendar id="button" value="#{mensajeBean.date3}" showOn="button" />
-					 
-					 <div class="Añadir">
-					 
-					 <p:commandButton update=":form"  value="Añadir" ajax="false" action="#{mensajeBean.addMensaje()}"></p:commandButton>
+					<h:panelGrid columns="2">
+					 	<p:outputLabel value="Id:" />
+					 	<p:inputText value="#{mensajeBean.mensaje.mensajeId}" disabled="true" size="1"></p:inputText>
+					 	<p:outputLabel value="Fecha de Creación: " />
+					  	<p:inputText value="#{mensajeBean.mensaje.fecha}" disabled="true" size="32"></p:inputText>
+					  	<p:outputLabel value="Descripcion: " />
+					  	<p:inputTextarea rows="6" cols="33" value="#{mensajeBean.mensaje.descripcion}" />
+					 </h:panelGrid>
+					  
+                     <div class="btnVolver">
+					 <p:commandButton value="Volver" ajax="false" action="#{mensajeBean.volverTabla()}"></p:commandButton>
+					  <p:commandButton value="Guardar" actionListener="#{mensajeBean.guardar()}"></p:commandButton>
 					 </div>
-					</h:panelGrid>
+					
 					</p:fieldset>
-					
-					
 				</h:form>
-					
-				</div>
 			</p:layoutUnit>
 			<p:layoutUnit position="south" style="background-color:#d5e7b4"/>
         </p:layout>	

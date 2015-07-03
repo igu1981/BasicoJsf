@@ -31,6 +31,7 @@ public class MensajeController implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	private String descripcion;
+	
 	private int total;
 	LoginConctroller lc;
 	private List<Mensaje> mensajes;
@@ -39,6 +40,7 @@ public class MensajeController implements Serializable
 	private Mensaje mensaje;
 	private Long key;
 	private Date date3;
+	private UsuarioController userController;
 	
 	
 	
@@ -59,6 +61,9 @@ public class MensajeController implements Serializable
 	@PostConstruct
 	public void init() {
 		mensajes = listMensaje();
+		FacesContext fcx=FacesContext.getCurrentInstance();
+		userController=(UsuarioController) fcx.getApplication().getELResolver().getValue(fcx.getELContext(),null , "usuarioBean");
+		
 	}
 	
 	//------------------------- Getters y Setters -------------------------------
@@ -130,6 +135,8 @@ public class MensajeController implements Serializable
 	public String addMensaje() {
 		Mensaje mensaje = new Mensaje();
 		mensaje.setDescripcion(descripcion);
+		mensaje.setFecha(date3);
+		mensaje.setIdusuario(userController.getIdusuarios());
 		
 		mensajeDao.create(mensaje);
 		descripcion="";
@@ -137,6 +144,14 @@ public class MensajeController implements Serializable
 		mensajes=listMensaje();
 		return "/publico/template/tenplate.xhtml?faces-redirect=true";
 	}
+	
+	 public List<Mensaje> search() 
+	  {
+	    	List<Mensaje> temp=mensajeDao.searchDao(filtBusqueda,estado); 
+	        estado=true;
+	        return temp;
+	       
+	   }
 	public List<Mensaje> listMensaje()
 	{
 		return mensajeDao.findAll();
@@ -145,7 +160,7 @@ public class MensajeController implements Serializable
 	{
 		mensajes=listMensaje();
 		
-		return "/publico/lista-mensaje.xhtml?faces-redirect=true";
+		return "/publico/views/lista-mensaje.xhtml?faces-redirect=true";
 	}
 	 public void info() {
 	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido",lc.getUsername() ));
@@ -178,31 +193,37 @@ public class MensajeController implements Serializable
 	    	mensaje = (Mensaje) event.getObject();
 	    }
 	    
-	    public List<Mensaje> search() 
-	    {
-	    	List<Mensaje> temp=mensajeDao.searchDao(filtBusqueda,estado); 
-	        estado=true;
-	        return temp;
-	       
-	    }
+	   
 	    
 	    public String busqueda()
 	    {
 	    	estado=false;
 	    	filtBusqueda="";
-	    	return "/publico/filtro-mensaje.xhtml?faces-redirect=true";
+	    	return "/publico/views/filtro-mensaje.xhtml?faces-redirect=true";
 	    
 			
 	    }
 	    
 	    public String modificar()
 	    {
-	    	return "/publico/modifcar-mensaje.xhtml?faces-redirect=true";
+	    	return "/publico/views/modifcar-mensaje.xhtml?faces-redirect=true";
+	    }
+	    public String modificarmio()
+	    {
+	    	return "/publico/views/modifcar-mensaje-mios.xhtml?faces-redirect=true";
 	    }
 	    
 	    public String volver()
 	    {
-	    	return "/publico/template/template.xhtml?faces-redirect=true";
+	    	return "/publico/views/menu-principal.xhtml?faces-redirect=true";
+	    }
+	    public String volverTabla()
+	    {
+	    	return "/publico/views/lista-mensaje.xhtml?faces-redirect=true";
+	    }
+	    public String volverTablamia()
+	    {
+	    	return "/publico/views/mensaje-mios.xhtml?faces-redirect=true";
 	    }
 	    
 	    public String borrar()
@@ -212,7 +233,7 @@ public class MensajeController implements Serializable
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 	        mensajes=listMensaje();
 	        
-	    	return "/publico/mensaje-mios.xhtml?faces-redirect=true";
+	    	return "/publico/views/mensaje-mios.xhtml?faces-redirect=true";
 	    }
 		
 	    public String guardar()
@@ -223,13 +244,13 @@ public class MensajeController implements Serializable
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 			
 			
-			return "/publico/template/modificar-mensaje.xhtml?faces-redirect=true";
+			return "/publico/views/modificar-mensaje.xhtml?faces-redirect=true";
 	    }
 	    public String mios()
 	    {
 	    
 			
-			return "/publico/mensaje-mios.xhtml?faces-redirect=true";
+			return "/publico/views/mensaje-mios.xhtml?faces-redirect=true";
 	    }
 	    public String nuevo()
 	    {
