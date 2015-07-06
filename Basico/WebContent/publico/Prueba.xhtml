@@ -17,10 +17,47 @@
 	<p:layoutUnit position="north" style="background-color:#d5e7b4" minSize="100" styleClass="panelGreen"/>
 	
 		
-		<p:layoutUnit position="center" style="border:0 ;background-color:#7c7e7e">
-		
-				<ui:include src="/publico/loginPrince.xhtml"/>	
-        </p:layoutUnit>
+		<p:layoutUnit position="center" style="border:0 ;background-color:#7c7e7e" >
+		<h:form id="form">
+             
+    <p:growl id="msgs" showDetail="true" />
+ 
+   
+    <p:tabView>
+        <p:tab title="Rutas por Asturias">
+            <h:panelGrid columns="2" cellpadding="10">
+               
+                
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Mapa con las Rutas">
+            <h:panelGrid columns="2" cellpadding="10">
+                
+               
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Rutas por categoria">
+            <h:panelGrid columns="2" cellpadding="10">
+                
+               
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Galeria de Fotos">
+            <h:panelGrid columns="2" cellpadding="10">
+                
+            </h:panelGrid>
+        </p:tab>
+        <p:tab title="Contacto">
+            <h:panelGrid columns="2" cellpadding="10">
+               
+            </h:panelGrid>
+        </p:tab>
+        
+    </p:tabView>
+    
+    </h:form>
+    </p:layoutUnit>
+			
         
         <p:layoutUnit position="south" style="background-color:#d5e7b4">
 	    </p:layoutUnit>

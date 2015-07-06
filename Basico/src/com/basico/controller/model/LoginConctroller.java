@@ -60,7 +60,7 @@ public class LoginConctroller implements Serializable
 	public String acceso() 
 	{  
 		
-		return "/publico/acceso.xhtml?faces-redirect=true";
+		return "/publico/views/acceso.xhtml?faces-redirect=true";
 	
 	
 	}
@@ -69,7 +69,7 @@ public class LoginConctroller implements Serializable
 	{  
 		
 		
-		return "/publico/registro.xhtml?faces-redirect=true";
+		return "/publico/views/registro.xhtml?faces-redirect=true";
 	}
 	
 	

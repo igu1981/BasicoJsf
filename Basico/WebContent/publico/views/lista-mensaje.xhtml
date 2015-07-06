@@ -89,14 +89,14 @@
 	            </p:commandLink>      
 	       </p:column>
 	       <p:column style="width:32px">
-	       <p:commandLink action="#{mensajeBean.borrar()}"><p:graphicImage library="images" name="borrar.jpg" styleClass="btnTable"/>
+	       <p:commandLink oncomplete="deletemsg()" ><p:graphicImage library="images" name="borrar.jpg" styleClass="btnTable"/>
 	            <f:setPropertyActionListener target="#{mensajeBean.mensaje}" value="#{mensaje}" />
 	            </p:commandLink>      
 	       </p:column>
 	       <p:column style="width:32px">
-	       <p:commandLink oncomplete="carOP.show()" >
-	       <p:graphicImage library="images" name="search.png" styleClass="btnTable" />
-	            <f:setPropertyActionListener target="#{mensajeBean.mensaje}" value="#{mensaje}" />
+	       <p:commandLink oncomplete="carOP.show()" onclick="PF('dlg1').show();">
+	       <p:graphicImage library="images" name="search.png" styleClass="btnTable"  />
+	            <f:setPropertyActionListener target="#{mensajeBean.mensaje}" value="#{mensaje}"/>
 	            </p:commandLink>      
 	       </p:column>
 	   </p:dataTable>
@@ -121,12 +121,26 @@
         			 <div class="Añadir">
 					 <p:commandButton value="Añadir Mensaje" actionListener="#{mensajeBean.addMensaje()}" oncomplete="dlg2.hide()" update=":leyendaTabla"></p:commandButton>
 					 </div>
-				</h:form>	 
+				</h:form>	
+				<h:form>
+				<p:remoteCommand name="deletemsg" actionListener="#{mensajeBean.borrar()}" update=":tabla">
+				</p:remoteCommand>
+				</h:form>
         </p:dialog>   
         </p:fieldset>
 			</p:layoutUnit>
 			<p:layoutUnit position="south" style="background-color:#d5e7b4"/>
         </p:layout>	
+        <p:dialog header="Detalle del Mensaje" widgetVar="dlg1" minHeight="80">
+    		<h:form>
+    				<p:outputLabel value="Id:" />
+					<p:inputText value="#{mensajeBean.mensaje.mensajeId}" disabled="true" size="1"></p:inputText>
+					<p:outputLabel value="Fecha de Creación: " />
+					<p:inputText value="#{mensajeBean.mensaje.fecha}" disabled="true" size="22"></p:inputText>
+					<p:outputLabel value="Descripcion: " />
+					<p:inputText value="#{mensajeBean.mensaje.descripcion}" disabled="true" size="32"></p:inputText>
+    		</h:form>
+		</p:dialog>
 		</h:body>
 	</f:view>
 </html>
